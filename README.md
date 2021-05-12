@@ -5,7 +5,7 @@ Title: Appointment Scheduler
 Purpose: To schedule customer appointments while adhering to business hour standards
 
 Author: Mike Bliss
-Contact Info: mbliss3@wgu.edu
+Contact Info: stratefx@gmail.com
 Version: 1.1.3
 Date: 5/7/21
 
