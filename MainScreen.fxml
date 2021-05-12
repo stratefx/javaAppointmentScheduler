@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="785.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreenController">
+   <children>
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="29.0" prefHeight="685.0" prefWidth="575.0" spacing="15.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="575.0" spacing="30.0">
+               <children>
+                  <Label fx:id="custLblMain" text="Customers">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <TableView fx:id="custTblViewMain" prefHeight="188.0" prefWidth="575.0">
+              <columns>
+                <TableColumn fx:id="custIdTblColMain" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="custNameTblColMain" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="custAddressTblColMain" prefWidth="75.0" text="Address" />
+                  <TableColumn fx:id="custPostalTblColMain" prefWidth="75.0" text="Postal Code" />
+                  <TableColumn fx:id="custPhoneTblColMain" prefWidth="75.0" text="Phone" />
+                  <TableColumn fx:id="custDivisionTblColMain" prefWidth="75.0" text="Division ID" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <GridPane hgap="10.0" layoutX="10.0" layoutY="438.0" prefHeight="147.0" prefWidth="575.0" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Customer Name:" />
+                  <Label text="Address:" GridPane.rowIndex="1" />
+                  <Label text="Postal Code:" GridPane.rowIndex="2" />
+                  <Label text="Phone Number:" GridPane.rowIndex="3" />
+                  <Label text="Division:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label text="Country:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="custNameTxt" GridPane.columnIndex="1" />
+                  <TextField fx:id="custAddressTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="custPostalCodeTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="custPhoneTxt" promptText="XXX-XXX-XXXX" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="divisionCmbo" onAction="#onActionDivisionCmbo" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="countryCmbo" onAction="#onActionCountryCmbo" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label text="Customer ID:" GridPane.columnIndex="2" />
+                  <TextField fx:id="custIDTxt" editable="false" opacity="0.48" promptText="Auto-generated" GridPane.columnIndex="3" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </GridPane>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="575.0" spacing="10.0">
+               <children>
+                  <Button fx:id="addCustBtnMain" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onActionAddCustBtnMain" prefWidth="99.0" text="Add New" />
+                  <Button fx:id="updateCustBtnMain" alignment="CENTER" mnemonicParsing="false" onAction="#onActionUpdateCustBtnMain" prefWidth="99.0" text="Update Existing" />
+                  <Button fx:id="saveUpdateCustBtn" alignment="CENTER" layoutX="194.0" layoutY="30.0" mnemonicParsing="false" onAction="#onActionSaveUpdateCustBtnMain" prefWidth="99.0" text="Save Update" />
+                  <Button fx:id="deleteCustBtnMain" alignment="CENTER" layoutX="286.0" layoutY="24.0" mnemonicParsing="false" onAction="#onActionDeleteCustBtnMain" prefWidth="99.0" text="Delete Existing" />
+                  <Button fx:id="clearAllCust" mnemonicParsing="false" onAction="#onActionClearAllCust" prefWidth="99.0" text="Clear All" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <Label text="Customer&#10;Appointment&#10;Report:" />
+                  <TextArea fx:id="custApptReportTxtBox" prefHeight="200.0" prefWidth="200.0" />
+                  <Label layoutX="176.0" layoutY="49.0" text="Contact&#10;Schedule:" />
+                  <TextArea fx:id="contactScheduleReportTxtBox" layoutX="198.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="514.0" prefHeight="30.0" prefWidth="200.0" spacing="15.0" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="615.0" layoutY="29.0" prefHeight="685.0" prefWidth="575.0" spacing="15.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="575.0" spacing="30.0">
+               <children>
+                  <Label text="Appointments">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label text="Sort By Current:" />
+                  <RadioButton fx:id="radioBtnMonthMain" mnemonicParsing="false" onAction="#onActionRadioBtnMonth" text="Month">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sortByMain" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radioBtnWeekMain" mnemonicParsing="false" onAction="#onActionRadioBtnWeek" text="Week" toggleGroup="$sortByMain" />
+                  <RadioButton fx:id="radioBtnAllMain" layoutX="416.0" layoutY="17.0" mnemonicParsing="false" onAction="#onActionRadioBtnAll" selected="true" text="All" toggleGroup="$sortByMain" />
+               </children>
+            </HBox>
+            <TableView fx:id="apptTblViewMain" prefHeight="188.0" prefWidth="575.0">
+               <columns>
+                  <TableColumn fx:id="apptIdColMain" prefWidth="75.0" text="Appt. ID" />
+                  <TableColumn fx:id="apptTitleColMain" prefWidth="75.0" text="Title" />
+                  <TableColumn fx:id="apptDescriptionColMain" prefWidth="75.0" text="Description" />
+                  <TableColumn fx:id="apptLocationColMain" prefWidth="75.0" text="Location" />
+                  <TableColumn fx:id="apptContactColMain" prefWidth="75.0" text="Contact" />
+                  <TableColumn fx:id="apptTypeColMain" prefWidth="75.0" text="Type" />
+                  <TableColumn fx:id="apptStartColMain" prefWidth="75.0" text="Start" />
+                  <TableColumn fx:id="apptEndColMain" prefWidth="75.0" text="End" />
+                  <TableColumn fx:id="apptCustIdColMain" prefWidth="75.0" text="Cust. ID" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <GridPane hgap="10.0" prefHeight="183.0" prefWidth="575.0" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Appointment ID:" />
+                  <Label text="Title:" GridPane.rowIndex="1" />
+                  <Label text="Description:" GridPane.rowIndex="2" />
+                  <Label text="Location:" GridPane.rowIndex="3" />
+                  <Label text="Contact Name:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label text="User ID:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="apptTitleText" onAction="#onActionApptTitleTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="apptDescTxt" onAction="#onActionApptDescTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="apptLocationTxt" onAction="#onActionApptLocationTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="apptContactNameCmbo" onAction="#onActionApptContactNameCmbo" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="apptUserIDCmbo" onAction="#onActionApptUserIDCmbo" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label text="Type:" GridPane.columnIndex="2" />
+                  <TextField fx:id="apptIDTxt" editable="false" onAction="#onActionApptIDTxt" opacity="0.48" promptText="Auto-generated" GridPane.columnIndex="1" />
+                  <Label text="Start Date:" GridPane.rowIndex="4" />
+                  <DatePicker fx:id="apptStartDate" onAction="#onActionApptStartDate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="Customer ID:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label text="End Date:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <DatePicker fx:id="apptEndDate" onAction="#onActionApptEndDate" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="apptCustIDCmbo" onAction="#onActionApptCustIDCmbo" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="apptTypeCmbo" onAction="#onActionApptTypeCmbo" prefWidth="150.0" GridPane.columnIndex="3" />
+                  <Label text="Start Time:" GridPane.rowIndex="5" />
+                  <Label text="End Time:" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="apptStartTimeCmbo" onAction="#onActionApptStartTime" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="apptEndTimeCmbo" onAction="#onActionApptEndTime" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </GridPane>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="575.0" spacing="10.0">
+               <children>
+                  <Button fx:id="apptAddBtn" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onActionApptAddBtn" prefWidth="99.0" text="Add New" />
+                  <Button fx:id="apptUpdateBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onActionApptUpdateBtn" prefWidth="99.0" text="Update Existing" />
+                  <Button fx:id="apptSaveBtn" mnemonicParsing="false" onAction="#onActionApptSaveBtn" prefWidth="99.0" text="Save Update" />
+                  <Button fx:id="apptDeleteBtn" alignment="CENTER" layoutX="286.0" layoutY="24.0" mnemonicParsing="false" onAction="#onActionApptDeleteBtn" prefWidth="99.0" text="Delete Existing" />
+                  <Button fx:id="apptClearAll" layoutX="326.0" layoutY="13.0" mnemonicParsing="false" onAction="#onActionApptClearAll" prefWidth="99.0" text="Clear All" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="527.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label text="Customers&#10;Per Country:" />
+                  <TextArea fx:id="customersPerCountryReportTxt" prefHeight="200.0" prefWidth="200.0" />
+                  <Label text="Upcoming&#10;Appointments:" />
+                  <TextArea fx:id="upcomingApptTextArea" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="15.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
